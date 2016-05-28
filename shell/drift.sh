@@ -1,7 +1,7 @@
 #!/bin/bash
 ./back.sh
 sleep 1
-./4.left.sh
+./small.left.sh
 sleep 1
-./4.left.sh
+./small.left.sh
 
