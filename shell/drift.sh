@@ -5,6 +5,6 @@ sleep 0.8
 sleep 0.5
 ./subdrift.left.sh
 sleep 1
-subdrift.stop.sh
+./subdrift.stop.sh
 
 
