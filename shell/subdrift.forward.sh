@@ -1,8 +1,8 @@
 #!/bin/bash
-echo "a.cmd.param:0.maxspeed" > /dev/ttyUSB0
-echo "b.cmd.param:0.maxspeed" > /dev/ttyUSB0
-echo "c.cmd.param:0.maxspeed" > /dev/ttyUSB0
-echo "d.cmd.param:0.maxspeed" > /dev/ttyUSB0
+echo "a.cmd.param:128.maxspeed" > /dev/ttyUSB0
+echo "b.cmd.param:128.maxspeed" > /dev/ttyUSB0
+echo "c.cmd.param:128.maxspeed" > /dev/ttyUSB0
+echo "d.cmd.param:128.maxspeed" > /dev/ttyUSB0
 
 
 echo "a.speed:60000" > /dev/ttyUSB0
