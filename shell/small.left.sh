@@ -2,6 +2,7 @@
 echo "a.speed:10000" > /dev/ttyUSB0
 echo "a.turn:fwd" > /dev/ttyUSB0
 
+echo "b.cmd.param:64.kvalhold" > /dev/ttyUSB0
 echo "b.cmd.softstop" > /dev/ttyUSB0
 
 echo "c.speed:10000" > /dev/ttyUSB0
