@@ -11,3 +11,4 @@ echo "b.cmd.hardstop" > /dev/ttyUSB0
 
 echo "b.speed:40000" > /dev/ttyUSB0
 echo "b.turn:fwd" > /dev/ttyUSB0
+echo "run" > /dev/ttyUSB0
