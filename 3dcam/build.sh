@@ -1,5 +1,5 @@
 #!/bin/bash
-sudo apt-get install cmake libopencv-dev libusb-1.0-dev
+sudo apt-get install cmake libopencv-dev libusb-1.0-0-dev
 
 rm -rf libuvc
 # build libuvc
