@@ -1,3 +1,3 @@
 #!/bin/bash
-sudo $pwd/object/camera
+sudo $PWD/object/camera
 
