@@ -2,7 +2,7 @@
 ./subdrift.forward.sh
 sleep 0.5
 ./subdrift.big.left.sh
-sleep 0.5
+sleep 0.8
 ./subdrift.lock.left.sh
 sleep 0.5
 #./subdrift.free.left.sh
