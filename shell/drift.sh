@@ -1,8 +1,8 @@
 #!/bin/bash
 ./subdrift.forward.sh
-sleep 0.5
+sleep 1
 ./subdrift.big.left.sh
-sleep 0.8
+sleep 1
 ./subdrift.lock.left.sh
 sleep 0.5
 #./subdrift.free.left.sh
