@@ -9,7 +9,7 @@ echo "d.cmd.param:64.kvalrun" > /dev/ttyUSB0
 #echo "a.turn:fwd" > /dev/ttyUSB0
 echo "d.cmd.hardstop" > /dev/ttyUSB0
 
-echo "b.speed:1000" > /dev/ttyUSB0
+echo "b.speed:20000" > /dev/ttyUSB0
 echo "b.turn:fwd" > /dev/ttyUSB0
 echo "c.speed:40000" > /dev/ttyUSB0
 echo "c.turn:fwd" > /dev/ttyUSB0
