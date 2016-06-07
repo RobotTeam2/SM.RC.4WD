@@ -13,3 +13,5 @@ echo "a.cmd.param:48.kvalhold" > /dev/ttyUSB0
 echo "b.cmd.param:48.kvalhold" > /dev/ttyUSB0
 echo "c.cmd.param:48.kvalhold" > /dev/ttyUSB0
 echo "d.cmd.param:48.kvalhold" > /dev/ttyUSB0
+
+echo "stop" > /dev/ttyUSB0
