@@ -17,6 +17,15 @@ int main()
 	strcpy( addr.sun_path, "/tmp/mpu.6050.unix.domain" );
 	
     char buf[MAX_BUF];
+    
+   if(::bind(fd, (struct sockaddr*)&addr, sizeof(addr)) < 0)
+   {
+
+     printf(" cannot bind socket: %d. Passed in address is invalid or port is in use",errno);
+
+     return 0;
+
+   }
 
     int degree = 90;
     while(degree >0) {
