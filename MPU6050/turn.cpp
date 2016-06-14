@@ -21,8 +21,8 @@ int main()
 	addr.sun_family = AF_LOCAL;
 	strcpy( addr.sun_path, "/tmp/mpu.6050.unix.domain" );
 	
-    char buf[MAX_BUF];
-   if (::setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int)) < 0) {
+   int use = 1; 
+   if (::setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &use, sizeof(int)) < 0) {
     perror("setsockopt(SO_REUSEADDR) failed");
    }
    if(::bind(fd, (struct sockaddr*)&addr, sizeof(addr)) < 0)
@@ -34,6 +34,7 @@ int main()
 
    }
 
+    char buf[MAX_BUF];
     int degree = 90;
     while(degree >0) {
     	socklen_t len = sizeof(addr);
