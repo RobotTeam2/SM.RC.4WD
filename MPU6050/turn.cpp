@@ -23,7 +23,7 @@ void sigcatch(int) {
 	}
 	exit(0);
 }
-int main()
+int main(int ac,char*av[])
 {
 	if (SIG_ERR == signal(SIGINT, sigcatch)) {
 		printf("failed to set signal handler.n");
@@ -51,20 +51,29 @@ int main()
    }
 
     char buf[MAX_BUF];
-    int degree = 90;
+    double degree = 90.0;
+    double startDeg = 0.0;
+    bool first = true;
     while(degree >0) {
     	socklen_t len = sizeof(addr);
         int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, &len);
         if(ret>0){
             //printf("Received: %s\n", buf);
             string recvStr(buf,ret);
-            std::cout << recvStr << std::endl;
+            //std::cout << recvStr << std::endl;
             std::stringstream ss;
             ss << recvStr;
             try {
             	boost::property_tree::ptree pt;
             	boost::property_tree::read_json(ss, pt);
-            	std::cout << pt.get<double>("yaw") << std::endl;
+            	auto current = pt.get<double>("yaw");
+            	//std::cout <<  current << std::endl;
+            	if(first) {
+            		startDeg = current;
+            	}
+            	if(current - startDeg >= degree) {
+            		break;
+            	}
             } catch(std::exception e) {
             	std::cout << e.what() << std::endl;
             }
