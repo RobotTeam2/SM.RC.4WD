@@ -11,6 +11,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+using namespace std;
 #include <boost/property_tree/json_parser.hpp>
 
 int main()
