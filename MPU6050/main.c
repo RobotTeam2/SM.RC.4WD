@@ -17,9 +17,9 @@ int main() {
 		 ypr[ROLL],temp,compass[0],compass[1],compass[2]);
 		#endif
 
-		printf("yaw = %2.1f\tpitch = %2.1f\troll = %2.1f\ttemperature = %2.1f\tcompass = %2.1f, %2.1f, %2.1f\n",
+		printf("yaw = %4.1f\tpitch = %4.1f\troll = %4.1f\ttemperature = %4.1f\n",
 		 gyro[YAW], gyro[PITCH],
-		 gyro[ROLL],temp,compass[0],compass[1],compass[2]);
+		 gyro[ROLL],temp);
 		delay_ms(5);
 	}while(1);
 
