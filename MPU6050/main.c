@@ -21,6 +21,7 @@
 
 
 int main() {
+	system("rm -f /tmp/mpu.6050.unix.domain");
 	ms_open();
 
 	int fd = socket( AF_LOCAL, SOCK_DGRAM, 0 );
