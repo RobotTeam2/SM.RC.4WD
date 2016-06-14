@@ -19,7 +19,6 @@ int main()
         if(ret>0){
             printf("Received: %s\n", buf);
         } else if (ret==0){
-            printf("noting \n");
         } else {
             printf("ret=<%d>\n",ret);
         }
