@@ -5,6 +5,7 @@ CXX_OPTS= -Wall -g -O2
 INSTALL=install
 
 PROG=mpu6050.service
+TURN=turn.until
 
 %.o: %.c                                                                         
 	$(CXX) $(CXXFLAGS) $(CXX_OPTS) $< -o $@ 
@@ -15,6 +16,8 @@ all: $(PROG).o
 		main.c \
 		MotionSensor/libMotionSensor.a \
 		libs/libI2Cdev.a
+	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $(TURN) \
+		turn.c 
 
 $(PROG).o: MotionSensor/libMotionSensor.a libs/libI2Cdev.a
 
