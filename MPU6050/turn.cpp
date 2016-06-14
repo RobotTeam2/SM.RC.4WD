@@ -8,6 +8,10 @@
  
 #define MAX_BUF 1024
 
+#include <sstream>
+#include <iostream>
+#include <boost/property_tree/json_parser.hpp>
+
 int main()
 {
     int fd = socket( AF_LOCAL, SOCK_DGRAM, 0 );
@@ -33,7 +37,12 @@ int main()
     	socklen_t len = sizeof(addr);
         int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, &len);
         if(ret>0){
-            printf("Received: %s\n", buf);
+            //printf("Received: %s\n", buf);
+            std::stringstream ss;
+            ss << buf;
+            boost::property_tree::ptree pt;
+            boost::property_tree::read_json(ss, pt);
+            std::cout << pt.get<double>("yaw") << std::endl;
         } else if (ret==0){
         } else {
             printf("ret=<%d>\n",ret);
