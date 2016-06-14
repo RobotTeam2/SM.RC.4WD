@@ -43,7 +43,7 @@ int main()
    if(::bind(fd, (struct sockaddr*)&addr, sizeof(addr)) < 0)
    {
 
-     printf(" cannot bind socket: %d. Passed in address is invalid or port is in use",errno);
+     printf(" cannot bind socket: %d. \n",errno);
      close(fd);
 
      return 0;
