@@ -17,7 +17,7 @@ int main() {
 	ms_open();
 
 	const char * gMpufifo = "/tmp/mpu.6050.fifo";
-	mkfifo(gMpufifo, 0666);
+	mkfifo(gMpufifo, 0777);
 	int fd = open(gMpufifo, O_WRONLY);
 	do{
 		ms_update();
