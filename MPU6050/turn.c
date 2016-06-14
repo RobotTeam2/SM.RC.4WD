@@ -8,11 +8,11 @@
 int main()
 {
     int fd;
-    const char * myfifo = "/tmp/myfifo";
+    const char * gMpufifo = "/tmp/mpu.6050.fifo";
     char buf[MAX_BUF];
 
     /* open, read, and display the message from the FIFO */
-    fd = open(myfifo, O_RDONLY);
+    fd = open(gMpufifo, O_RDONLY);
     read(fd, buf, MAX_BUF);
     printf("Received: %s\n", buf);
     close(fd);
