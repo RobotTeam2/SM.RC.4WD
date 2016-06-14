@@ -17,7 +17,7 @@ all: $(PROG).o
 		MotionSensor/libMotionSensor.a \
 		libs/libI2Cdev.a
 	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $(TURN) \
-		turn.c 
+		turn.cpp 
 
 $(PROG).o: MotionSensor/libMotionSensor.a libs/libI2Cdev.a
 
