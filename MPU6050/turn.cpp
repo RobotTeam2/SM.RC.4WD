@@ -10,6 +10,7 @@
 
 #include <sstream>
 #include <iostream>
+#include <string>
 #include <boost/property_tree/json_parser.hpp>
 
 int main()
@@ -41,8 +42,10 @@ int main()
         int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, &len);
         if(ret>0){
             //printf("Received: %s\n", buf);
+            string recvStr(buf,ret);
+            std::cout << recvStr << std::endl;
             std::stringstream ss;
-            ss << buf;
+            ss << recvStr;
             boost::property_tree::ptree pt;
             boost::property_tree::read_json(ss, pt);
             std::cout << pt.get<double>("yaw") << std::endl;
