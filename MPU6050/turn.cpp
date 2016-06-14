@@ -51,7 +51,7 @@ int main(int ac,char*av[])
    }
 
     char buf[MAX_BUF];
-    double degree = 90.0;
+    double degree = 20.0;
     double startDeg = 0.0;
     bool first = true;
     while(degree >0) {
@@ -71,7 +71,9 @@ int main(int ac,char*av[])
             	if(first) {
             		startDeg = current;
             	}
-            	if(current - startDeg >= degree) {
+            	auto diff = current - startDeg;
+            	std::cout <<  "diff=<" << diff <<">"<< std::endl;
+            	if( diff >= degree) {
             		break;
             	}
             } catch(std::exception e) {
