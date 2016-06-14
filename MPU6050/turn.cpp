@@ -14,9 +14,22 @@
 using namespace std;
 #include <boost/property_tree/json_parser.hpp>
 
+static int fd = -1;
+#include <signal.h>
+#include <stdio.h>
+void sigcatch(int) {
+	if(fd > 0) {
+		close(fd);
+	}
+	exit(0);
+}
 int main()
 {
-    int fd = socket( AF_LOCAL, SOCK_DGRAM, 0 );
+	if (SIG_ERR == signal(SIGINT, sigcatch)) {
+		printf("failed to set signal handler.n");
+		exit(1);
+	}
+     fd = socket( AF_LOCAL, SOCK_DGRAM, 0 );
 	
 	struct sockaddr_un addr;
 	bzero( &addr, sizeof(addr) );
@@ -31,6 +44,7 @@ int main()
    {
 
      printf(" cannot bind socket: %d. Passed in address is invalid or port is in use",errno);
+     close(fd);
 
      return 0;
 
