@@ -12,7 +12,7 @@ int main()
     char buf[MAX_BUF];
 
     /* open, read, and display the message from the FIFO */
-    fd = open(gMpufifo, O_RDONLY);
+    fd = open(gMpufifo, O_RDONLY|O_NONBLOCK);
     read(fd, buf, MAX_BUF);
     printf("Received: %s\n", buf);
     close(fd);
