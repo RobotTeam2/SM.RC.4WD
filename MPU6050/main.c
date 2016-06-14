@@ -23,7 +23,9 @@ int main() {
 		ms_update();
 		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
 		 ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
-		 fprintf(fd, "{yaw:%f,pitch:%f,roll:%f,temperature:%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
+		 char buff[256];
+		 sprintf(buff, "{yaw:%f,pitch:%f,roll:%f,temperature:%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
+		 write(fd,buff,strlen(buff));
 #if 0
 		printf("yaw = %5.4f\tpitch = %4.5f\troll = %5.4f\ttemperature = %5.4f\n",
 		 gyro[YAW], gyro[PITCH],
