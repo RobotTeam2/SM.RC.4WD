@@ -18,7 +18,7 @@ int main() {
 
 	const char * gMpufifo = "/tmp/mpu.6050.fifo";
 	mkfifo(gMpufifo, 0777);
-	int fd = open(gMpufifo, O_WRONLY|O_NONBLOCK);
+	int fd = open(gMpufifo, O_WRONLY/*|O_NONBLOCK*/);
 	do{
 		ms_update();
 		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
