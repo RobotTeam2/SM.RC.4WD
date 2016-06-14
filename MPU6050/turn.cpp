@@ -70,6 +70,7 @@ int main(int ac,char*av[])
             	//std::cout <<  current << std::endl;
             	if(first) {
             		startDeg = current;
+            		first = false;
             	}
             	auto diff = current - startDeg;
             	std::cout <<  "diff=<" << diff <<">"<< std::endl;
