@@ -4,6 +4,7 @@
 #include <unistd.h>
 #include <sys/socket.h> 
 #include <sys/un.h> 
+#include <errno.h> 
  
 #define MAX_BUF 1024
 
