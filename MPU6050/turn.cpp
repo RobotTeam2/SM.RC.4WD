@@ -25,6 +25,7 @@ void sigcatch(int) {
 }
 int main(int ac,char*av[])
 {
+	system("rm -f /tmp/mpu.6050.unix.domain");
 	if (SIG_ERR == signal(SIGINT, sigcatch)) {
 		printf("failed to set signal handler.n");
 		exit(1);
