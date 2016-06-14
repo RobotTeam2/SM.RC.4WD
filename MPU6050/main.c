@@ -32,7 +32,7 @@ int main() {
 		ms_update();
 		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
 		 ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
-		 char buff[256];
+		 char buff[256] = {0};
 		 sprintf(buff, "{yaw:%f,pitch:%f,roll:%f,temperature:%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
 		 sendto(fd, buff, strlen(buff), 0, (struct sockaddr *)&addr, sizeof(addr) );
 #if 0
