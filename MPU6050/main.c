@@ -11,12 +11,8 @@ int main() {
 	ms_open();
 	do{
 		ms_update();
-		#if 1
 		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
-		 ypr[YAW], ypr[PITCH],
-		 ypr[ROLL],temp);
-		#endif
-
+		 ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
 #if 0
 		printf("yaw = %5.4f\tpitch = %4.5f\troll = %5.4f\ttemperature = %5.4f\n",
 		 gyro[YAW], gyro[PITCH],
