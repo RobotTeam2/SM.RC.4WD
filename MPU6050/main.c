@@ -12,6 +12,7 @@
 #include <sys/un.h>
 #include <netinet/in.h>
 #include <arpa/inet.h>
+#include <errno.h>
 
 
 #include "MotionSensor.h"
@@ -28,6 +29,12 @@ int main() {
 	bzero( &addr, sizeof(addr) );
 	addr.sun_family = AF_LOCAL;
 	strcpy( addr.sun_path, "/tmp/mpu.6050.unix.domain" );
+	
+	int yes = 1; 
+   if (::setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &yes, sizeof(yes)) < 0) {
+    perror("setsockopt(SO_REUSEADDR) failed\n");
+   }
+	
 	do{
 		ms_update();
 		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
