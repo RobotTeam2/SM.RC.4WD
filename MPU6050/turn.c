@@ -13,8 +13,14 @@ int main()
 
     /* open, read, and display the message from the FIFO */
     fd = open(gMpufifo, O_RDONLY|O_NONBLOCK);
-    read(fd, buf, MAX_BUF);
-    printf("Received: %s\n", buf);
+    int ret = read(fd, buf, MAX_BUF);
+    if(ret>0){
+        printf("Received: %s\n", buf);
+    } else if (ret==0){
+        printf("noting \n");
+    } else {
+        printf("ret=<%d>\n",ret);
+    }
     close(fd);
 
     return 0;
