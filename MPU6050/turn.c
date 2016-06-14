@@ -18,11 +18,9 @@ int main()
 	
     char buf[MAX_BUF];
 
-    /* open, read, and display the message from the FIFO */
-    fd = open(gMpufifo, O_RDONLY|O_NONBLOCK);
     int degree = 90;
     while(degree >0) {
-        int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)addr, sizeof(addr));
+        int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, sizeof(addr));
         if(ret>0){
             printf("Received: %s\n", buf);
         } else if (ret==0){
