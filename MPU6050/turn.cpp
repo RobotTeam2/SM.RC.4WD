@@ -53,6 +53,10 @@ int main(int ac,char*av[])
 
     char buf[MAX_BUF];
     double degree = 20.0;
+    if(ac > 1) {
+    	degree = ::atof(av[1]);
+    }
+    degree = std::fabs(degree);
     double startDeg = 0.0;
     bool first = true;
     while(degree >0) {
@@ -73,7 +77,7 @@ int main(int ac,char*av[])
             		startDeg = current;
             		first = false;
             	}
-            	auto diff = current - startDeg;
+            	auto diff = std::fabs(current - startDeg);
             	std::cout <<  "diff=<" << diff <<">"<< std::endl;
             	if( diff >= degree) {
             		break;
