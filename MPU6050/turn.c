@@ -20,7 +20,8 @@ int main()
 
     int degree = 90;
     while(degree >0) {
-        int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, sizeof(addr));
+    	socklen_t len = sizeof(addr);
+        int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, &len);
         if(ret>0){
             printf("Received: %s\n", buf);
         } else if (ret==0){
