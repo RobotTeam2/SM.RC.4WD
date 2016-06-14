@@ -14,11 +14,11 @@
 
 
 int main() {
-	int fd;
-	const char * gMpufifo = "/tmp/mpu.6050.fifo";
 	ms_open();
+
+	const char * gMpufifo = "/tmp/mpu.6050.fifo";
 	mkfifo(gMpufifo, 0666);
-	fd = open(gMpufifo, O_WRONLY);
+	int fd = open(gMpufifo, O_WRONLY);
 	do{
 		ms_update();
 		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
