@@ -22,7 +22,9 @@ int main()
 	strcpy( addr.sun_path, "/tmp/mpu.6050.unix.domain" );
 	
     char buf[MAX_BUF];
-    
+   if (::setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &(int){ 1 }, sizeof(int)) < 0) {
+    perror("setsockopt(SO_REUSEADDR) failed");
+   }
    if(::bind(fd, (struct sockaddr*)&addr, sizeof(addr)) < 0)
    {
 
