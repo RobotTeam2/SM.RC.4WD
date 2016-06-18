@@ -42,6 +42,14 @@ int main(int ac,char*av[])
    if (::setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &use, sizeof(int)) < 0) {
     perror("setsockopt(SO_REUSEADDR) failed");
    }
+
+	struct timeval timeout;
+	timeout.tv_sec = 0;
+	timeout.tv_usec = 1000;
+   	if (::setsockopt(fd, SOL_SOCKET, SO_RCVTIMEO, &timeout, sizeof(timeout)) < 0) {
+	    	perror("setsockopt(SO_RCVTIMEO) failed");
+   	}
+
    if(::bind(fd, (struct sockaddr*)&addr, sizeof(addr)) < 0)
    {
 
@@ -66,6 +74,10 @@ int main(int ac,char*av[])
     while(msRun < 1000) {
     	chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     	msRun = chrono::duration_cast<chrono::microseconds>(end - start).count();
+    	
+
+
+    	
     	socklen_t len = sizeof(addr);
         int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, &len);
         if(ret>0){
