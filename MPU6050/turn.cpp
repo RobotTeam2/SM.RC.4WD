@@ -61,7 +61,7 @@ int main(int ac,char*av[])
    }
 
     char buf[MAX_BUF];
-    double degree = 20.0;
+    double degree = 90.0;
     if(ac > 1) {
     	degree = ::atof(av[1]);
     }
@@ -74,7 +74,7 @@ int main(int ac,char*av[])
     while(msRun < 1000) {
     	chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
     	msRun = chrono::duration_cast<chrono::milliseconds>(end - start).count();
-    	printf("msRun=<%d>\n",msRun);
+    	//printf("msRun=<%d>\n",msRun);
 
 
     	
@@ -104,9 +104,9 @@ int main(int ac,char*av[])
             	std::cout << e.what() << std::endl;
             }
         } else if (ret==0){
-        	printf("ret=<%d>\n",ret);
+        	//printf("ret=<%d>\n",ret);
         } else {
-        	printf("ret=<%d>\n",ret);
+        	//printf("ret=<%d>\n",ret);
         }
     }
     close(fd);
