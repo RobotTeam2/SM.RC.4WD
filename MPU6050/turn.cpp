@@ -15,6 +15,11 @@
 using namespace std;
 #include <boost/property_tree/json_parser.hpp>
 
+
+const static double PI = 3.14159265;
+const static int iConstRound = 60;
+const static double iConstRoundLimit = sin(iConstRound*pi/180.0);
+
 static int fd = -1;
 #include <signal.h>
 #include <stdio.h>
@@ -66,6 +71,8 @@ int main(int ac,char*av[])
     	degree = ::atof(av[1]);
     }
     degree = std::fabs(degree);
+    int iRound = degree/iConstRound;
+    double dRemain = degree - (iRound *iConstRound);
     double startDeg = 0.0;
     bool first = true;
     chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
@@ -95,10 +102,23 @@ int main(int ac,char*av[])
             		startDeg = current;
             		first = false;
             	}
-            	auto diff = std::fabs(current - startDeg);
+            	double dRoundRad = 0.0;
+            	if(iRound >0) {
+            		dRoundRad = iConstRoundLimit;
+            	} else {
+            		dRoundRad = sin(PI*dRemain/180.0);
+            	}
+            	double diffDeg = std::fabs(current - startDeg);
+            	double diffRad = (PI*diffDeg/180.0);
+            	double diff = dRoundRad - sin(diffRad);
             	std::cout <<  "diff=<" << diff <<">"<< std::endl;
-            	if( diff >= degree) {
-            		break;
+            	if(diff <=0) {
+            		if(iRound >0) {
+            			iRound--;
+            		}
+            		else {
+            			break;
+            		}
             	}
             } catch(std::exception e) {
             	std::cout << e.what() << std::endl;
