@@ -20,7 +20,7 @@
 
 #define delay_ms(a) usleep(a*1000)
 
-#define YAW360(x) (x>0 ? x*2:180 + x*2)
+#define YAW360(x) (x>0 ? x*2:360 + x*2)
 
 int main() {
 	system("rm -f /tmp/mpu.6050.unix.domain");
