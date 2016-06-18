@@ -18,7 +18,7 @@ using namespace std;
 
 const static double PI = 3.14159265;
 const static int iConstRound = 60;
-const static double iConstRoundLimit = sin(iConstRound*pi/180.0);
+const static double iConstRoundLimit = sin(iConstRound*PI/180.0);
 
 static int fd = -1;
 #include <signal.h>
