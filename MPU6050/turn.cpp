@@ -74,7 +74,7 @@ int main(int ac,char*av[])
     int iRound = degree/iConstRound;
     double dRemain = degree - (iRound *iConstRound);
     double startDeg = 0.0;
-    bool first = true;
+    bool restartBase = true;
     chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
     int msRun = 0;
     // 1000 ms 
@@ -98,9 +98,10 @@ int main(int ac,char*av[])
             	boost::property_tree::read_json(ss, pt);
             	auto current = pt.get<double>("yaw");
             	//std::cout <<  current << std::endl;
-            	if(first) {
+            	if(restartBase) {
             		startDeg = current;
-            		first = false;
+            		restartBase = false;
+            		continue;
             	}
             	double dRoundRad = 0.0;
             	if(iRound >0) {
@@ -115,6 +116,7 @@ int main(int ac,char*av[])
             	if(diff <=0) {
             		if(iRound >0) {
             			iRound--;
+	            		restartBase = true;
             		}
             		else {
             			break;
