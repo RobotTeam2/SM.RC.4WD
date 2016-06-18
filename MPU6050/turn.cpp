@@ -92,6 +92,7 @@ int main(int ac,char*av[])
             	std::cout << e.what() << std::endl;
             }
         } else if (ret==0){
+        	printf("ret=<%d>\n",ret);
         } else {
             printf("ret=<%d>\n",ret);
         }
