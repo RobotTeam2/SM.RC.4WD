@@ -11,4 +11,4 @@ stty -F /dev/ttyUSB0 raw
 stty -F /dev/ttyUSB0 -echo -echoe -echok
 stty -F /dev/ttyUSB0
 cat /dev/ttyUSB0 &
-$HOME/MPU6050/mpu6050.service &
+$HOME/MPU6050/mpu6050.service >/dev/null&
