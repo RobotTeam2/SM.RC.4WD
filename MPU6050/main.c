@@ -42,6 +42,7 @@ int main() {
 		 char buff[256] = {0};
 		 sprintf(buff, "{\"yaw\":%f,\"pitch\":%f,\"roll\":%f,\"temperature\":%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
 		 sendto(fd, buff, strlen(buff), 0, (struct sockaddr *)&addr, sizeof(addr) );
+		 printf("{\"yaw\":%f,\"pitch\":%f,\"roll\":%f,\"temperature\":%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
 		delay_ms(1);
 	}while(1);
 	close(fd);
