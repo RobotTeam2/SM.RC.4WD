@@ -73,8 +73,8 @@ int main(int ac,char*av[])
     // 1000 ms 
     while(msRun < 1000) {
     	chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
-    	msRun = chrono::duration_cast<chrono::microseconds>(end - start).count();
-    	
+    	msRun = chrono::duration_cast<chrono::milliseconds>(end - start).count();
+    	printf("msRun=<%d>\n",msRun);
 
 
     	
@@ -106,7 +106,7 @@ int main(int ac,char*av[])
         } else if (ret==0){
         	printf("ret=<%d>\n",ret);
         } else {
-            printf("ret=<%d>\n",ret);
+        	printf("ret=<%d>\n",ret);
         }
     }
     close(fd);
