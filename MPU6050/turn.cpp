@@ -110,10 +110,12 @@ int main(int ac,char*av[])
             		dRoundRad = sin(PI*dRemain/180.0);
             	}
             	double diffDeg = std::fabs(current - startDeg);
+            	std::cout <<  "diffDeg=<" << diffDeg <<">"<< std::endl;
             	/// over 
             	if(diffDeg > iConstRound) {
             		diffDeg = std::fabs(360 -diffDeg);
             	}
+            	std::cout <<  "diffDeg=<" << diffDeg <<">"<< std::endl;
             	double diffRad = (PI*diffDeg/180.0);
             	double diff = dRoundRad - sin(diffRad);
             	std::cout <<  "diff=<" << diff <<">"<< std::endl;
