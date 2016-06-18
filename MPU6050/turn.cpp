@@ -118,6 +118,7 @@ int main(int ac,char*av[])
             	double diff = dRoundRad - sin(diffRad);
             	std::cout <<  "diff=<" << diff <<">"<< std::endl;
             	if(diff <=0) {
+            		std::cout <<  "iRound=<" << iRound <<">"<< std::endl;
             		if(iRound >0) {
             			iRound--;
 	            		restartBase = true;
