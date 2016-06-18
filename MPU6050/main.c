@@ -39,18 +39,9 @@ int main() {
 	
 	do{
 		ms_update();
-#if 0
-		printf("yaw = %5.4f\tpitch = %5.4f\troll = %5.4f\ttemperature = %5.4f\n",
-		 ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
-#endif
 		 char buff[256] = {0};
 		 sprintf(buff, "{\"yaw\":%f,\"pitch\":%f,\"roll\":%f,\"temperature\":%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
 		 sendto(fd, buff, strlen(buff), 0, (struct sockaddr *)&addr, sizeof(addr) );
-#if 0
-		printf("yaw = %5.4f\tpitch = %4.5f\troll = %5.4f\ttemperature = %5.4f\n",
-		 gyro[YAW], gyro[PITCH],
-		 gyro[ROLL],temp);
-#endif
 		delay_ms(1);
 	}while(1);
 	close(fd);
