@@ -20,6 +20,7 @@
 
 #define delay_ms(a) usleep(a*1000)
 
+#define YAW360(x) (x>0 ? x*2:180 + x*2)
 
 int main() {
 	system("rm -f /tmp/mpu.6050.unix.domain");
@@ -42,7 +43,7 @@ int main() {
 		 char buff[256] = {0};
 		 sprintf(buff, "{\"yaw\":%f,\"pitch\":%f,\"roll\":%f,\"temperature\":%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
 		 sendto(fd, buff, strlen(buff), 0, (struct sockaddr *)&addr, sizeof(addr) );
-		 printf("{\"yaw\":%f,\"pitch\":%f,\"roll\":%f,\"temperature\":%f}\n", ypr[YAW], ypr[PITCH],ypr[ROLL],temp);
+		 printf("{\"yaw\":%f,\"pitch\":%f,\"roll\":%f,\"temperature\":%f}\n", YAW360(ypr[YAW]), ypr[PITCH],ypr[ROLL],temp);
 		delay_ms(1);
 	}while(1);
 	close(fd);
