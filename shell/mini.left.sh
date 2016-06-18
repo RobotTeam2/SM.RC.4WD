@@ -8,3 +8,7 @@ echo "c.turn:fwd" > /dev/ttyUSB0
 echo "d.speed:10000" > /dev/ttyUSB0
 echo "d.turn:rev" > /dev/ttyUSB0
 echo "run" > /dev/ttyUSB0
+
+HOME=`dirname $0`/..
+$HOME/MPU6050/turn.until $*
+echo "stop" > /dev/ttyUSB0
