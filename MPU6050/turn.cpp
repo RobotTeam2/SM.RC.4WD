@@ -19,6 +19,7 @@ using namespace std;
 const static double PI = 3.14159265;
 const static int iConstRound = 60;
 const static double iConstRoundLimit = sin(iConstRound*PI/180.0);
+const static double dConstDifferMin = 0.01;
 
 static int fd = -1;
 #include <signal.h>
@@ -119,7 +120,7 @@ int main(int ac,char*av[])
             	double diffRad = (PI*diffDeg/180.0);
             	double diff = dRoundRad - sin(diffRad);
             	std::cout <<  "diff=<" << diff <<">"<< std::endl;
-            	if(diff <=0) {
+            	if(diff <= dConstDifferMin) {
             		std::cout <<  "iRound=<" << iRound <<">"<< std::endl;
             		if(iRound >0) {
             			iRound--;
