@@ -11,6 +11,7 @@
 #include <sstream>
 #include <iostream>
 #include <string>
+#include <chrono>
 using namespace std;
 #include <boost/property_tree/json_parser.hpp>
 
@@ -59,7 +60,12 @@ int main(int ac,char*av[])
     degree = std::fabs(degree);
     double startDeg = 0.0;
     bool first = true;
-    while(degree >0) {
+    chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+    int msRun = 0;
+    // 1000 ms 
+    while(msRun < 1000) {
+    	chrono::steady_clock::time_point end = std::chrono::steady_clock::now();
+    	msRun = chrono::duration_cast<chrono::microseconds>(end - start).count();
     	socklen_t len = sizeof(addr);
         int ret = ::recvfrom(fd, buf, MAX_BUF, 0, (struct sockaddr *)&addr, &len);
         if(ret>0){
