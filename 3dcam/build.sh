@@ -5,6 +5,7 @@ rm -rf libuvc
 # build libuvc
 git clone https://github.com/ktossell/libuvc
 cd libuvc
+mv include/utlist.h include/libuvc/ 
 mkdir build
 cd build
 cmake ..
