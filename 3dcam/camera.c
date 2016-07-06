@@ -4,18 +4,27 @@
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
 #include <opencv/highgui.h>
+#include <opencv/cvaux.h>
 #include <libusb-1.0/libusb.h>
-#include "libuvc/libuvc.h"
+#include <libuvc/libuvc.h>
 #include <libuvc/libuvc_config.h>
-#include <libuvc/libuvc_internal.h>
+#include "libuvc/include/libuvc/libuvc_internal.h"
 
-void smd_cmd();
+
+void smd_cmd(uvc_device_handle_t *devh);
 
 void cb(uvc_frame_t *frame, void *ptr)
 {
   uvc_frame_t *bgr=NULL;
-  uvc_error_t ret=0;
+  uvc_error_t ret=(uvc_error_t)0;
   IplImage* cvImg=NULL;
+  IplImage *leftim = cvCreateImage(cvSize(640,480),8,3);
+  IplImage *rightim = cvCreateImage(cvSize(640,480),8,3);
+  IplImage *tmp = NULL;
+  IplImage* depth = cvCreateImage(cvGetSize(leftim),8,1);
+  IplImage* l = cvCreateImage(cvGetSize(leftim),8,1);
+  IplImage* r = cvCreateImage(cvGetSize(leftim),8,1);
+  IplImage* dest = cvCreateImage(cvGetSize(leftim),8,3);
 
   printf("callback! length = %u, ptr = %d\n", (unsigned int)frame->data_bytes, (int)ptr);
   bgr = uvc_allocate_frame(frame->width * frame->height * 3);
@@ -36,11 +45,39 @@ void cb(uvc_frame_t *frame, void *ptr)
 
   cvSetData(cvImg, bgr->data, bgr->width * 3);
 
-  cvNamedWindow("Test", CV_WINDOW_AUTOSIZE);
-  cvShowImage("Test", cvImg);
+  tmp=cvCloneImage(cvImg);
+  cvSetImageROI(tmp,cvRect(0,0,320,480));
+  cvResize(tmp,leftim,CV_INTER_LINEAR);
+  cvSetImageROI(tmp,cvRect(320,0,320,480));
+  cvResize(tmp,rightim,CV_INTER_LINEAR);
+  cvReleaseImage(&tmp);
+
+  cvNamedWindow("Left", CV_WINDOW_AUTOSIZE);
+  cvShowImage("Left", leftim);
   cvWaitKey(10);
 
+  cvNamedWindow("Right", CV_WINDOW_AUTOSIZE);
+  cvShowImage("Right", rightim);
+  cvWaitKey(10);
+
+  cvCvtColor(leftim,l,CV_BGR2GRAY);
+  cvCvtColor(rightim,r,CV_BGR2GRAY);
+  cvFindStereoCorrespondence( l, r, CV_DISPARITY_BIRCHFIELD, depth, 100, 
+15, 3, 6, 8, 15 );
+  cvCvtColor(depth,dest,CV_GRAY2BGR);
+  cvScale(dest,dest,255/100);
+  cvNamedWindow("Depth", CV_WINDOW_AUTOSIZE);
+  cvShowImage("Depth", dest);
+  cvWaitKey(10);
+
+  cvReleaseImage(&depth);
+  cvReleaseImage(&l);
+  cvReleaseImage(&r);
+  cvReleaseImage(&dest);
+
   cvReleaseImageHeader(&cvImg);
+  cvReleaseImageHeader(&leftim);
+  cvReleaseImageHeader(&rightim);
 
   uvc_free_frame(bgr);
 }
@@ -51,9 +88,9 @@ int main()
   uvc_device_t *dev=NULL;
   uvc_device_handle_t *devh=NULL;
   uvc_stream_ctrl_t ctrl;
-  uvc_error_t res=0;
-  uvc_error_t resAEMODE=0;
-  uvc_error_t resEXP=0;
+  uvc_error_t res=(uvc_error_t)0;
+  uvc_error_t resAEMODE=(uvc_error_t)0;
+  uvc_error_t resEXP=(uvc_error_t)0;
 
 
   unsigned int i,j;
@@ -95,7 +132,7 @@ int main()
       if(res < 0){
 	uvc_perror(res, "get_mode");
       }else{
-	res = uvc_start_streaming(devh, &ctrl, cb, 12345, 0);
+	res = uvc_start_streaming(devh, &ctrl, cb, (void *)12345, 0);
 	smd_cmd(devh);
 	if(res < 0){
 	  uvc_perror(res, "start_streaming");
@@ -141,7 +178,7 @@ void smd_cmd(uvc_device_handle_t *devh)
 				0x01,
 				0x0800,
 				0x0600,
-				buf,
+				(unsigned char *)buf,
 				sizeof(buf),
 				0);
   printf("res = %d\n",res);
@@ -155,7 +192,7 @@ void smd_cmd(uvc_device_handle_t *devh)
 				0x01,
 				0xa00,
 				0x600,
-				buf,
+				(unsigned char *)buf,
 				sizeof(buf),
 				0);
   if(res == sizeof(buf))printf("Control transfer Success!\n");
