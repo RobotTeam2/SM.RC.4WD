@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <time.h>
+#include <unistd.h>
 #include <sys/time.h>
 #include <opencv/cv.h>
 #include <opencv/cxcore.h>
@@ -18,8 +19,8 @@ void cb(uvc_frame_t *frame, void *ptr)
   uvc_frame_t *bgr=NULL;
   uvc_error_t ret=(uvc_error_t)0;
   IplImage* cvImg=NULL;
-  IplImage *leftim = cvCreateImage(cvSize(640,480),8,3);
-  IplImage *rightim = cvCreateImage(cvSize(640,480),8,3);
+  IplImage *leftim = cvCreateImage(cvSize(320,480),8,3);
+  IplImage *rightim = cvCreateImage(cvSize(320,480),8,3);
   IplImage *tmp = NULL;
   IplImage* depth = cvCreateImage(cvGetSize(leftim),8,1);
   IplImage* l = cvCreateImage(cvGetSize(leftim),8,1);
@@ -58,17 +59,19 @@ void cb(uvc_frame_t *frame, void *ptr)
 
   cvNamedWindow("Right", CV_WINDOW_AUTOSIZE);
   cvShowImage("Right", rightim);
-  cvWaitKey(10);
 
   cvCvtColor(leftim,l,CV_BGR2GRAY);
   cvCvtColor(rightim,r,CV_BGR2GRAY);
-  cvFindStereoCorrespondence( l, r, CV_DISPARITY_BIRCHFIELD, depth, 100, 
-15, 3, 6, 8, 15 );
-  cvCvtColor(depth,dest,CV_GRAY2BGR);
-  cvScale(dest,dest,255/100);
-  cvNamedWindow("Depth", CV_WINDOW_AUTOSIZE);
-  cvShowImage("Depth", dest);
-  cvWaitKey(10);
+// cvFindStereoCorrespondence( l, r, CV_DISPARITY_BIRCHFIELD, depth, 127,
+//15, 3, 6, 8, 15 );  
+//  cvCvtColor(depth,dest,CV_GRAY2BGR);
+//  cvScale(dest,dest,255/100);
+//  cvNamedWindow("Depth", CV_WINDOW_AUTOSIZE);
+//  cvShowImage("Depth", dest);
+  cvNamedWindow("Original", CV_WINDOW_AUTOSIZE);
+  cvShowImage("Original", cvImg);
+
+//  cvWaitKey(10);
 
   cvReleaseImage(&depth);
   cvReleaseImage(&l);
@@ -142,7 +145,8 @@ int main()
 	  uvc_perror(resAEMODE, "set_ae_mode");
 
 	  while(1){
-	    scanf("%d",&i);
+	    scanf("%d",i);
+//	    usleep(500000);
 	  }
 	  uvc_stop_streaming(devh);
 	  puts("Done streaming.");
