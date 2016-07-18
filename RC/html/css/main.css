@@ -110,7 +110,7 @@ body {
 #dir-top {
     height:100%;
     width:20%;
-    margin: 0 auto;
+    margin-left: 30%;
     background-image: url("../image/ic_arrow_upward_black_24dp_2x.png");
     background-size: cover;
      /*
@@ -135,10 +135,15 @@ body {
     height:100%;
     width:90%;
     border-radius: 50%;
+    background-image: url("../image/ic_cancel_black_24dp_2x.png");
+    background-size: cover;
+    /*
     border-style: solid;
     border-color: blue;
+     */
 }
 
+/*
 #dir-stop {
     height:50%;
     width:45%;
@@ -146,7 +151,7 @@ body {
     border-style: solid;
     border-color: red;
 }
-
+*/
 
 #dir-right {
     height:100%;
@@ -163,7 +168,7 @@ body {
 #dir-buttom {
     height:100%;
     width:20%;
-    margin: 0 auto;
+    margin-left: 30%;
     background-image: url("../image/ic_arrow_downward_black_24dp_2x.png");
     background-size: cover;
      /*
