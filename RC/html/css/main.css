@@ -109,8 +109,8 @@ body {
 
 #dir-top {
     height:100%;
-    width:24%;
-    margin-left: 30%;
+    width:30%;
+    margin-left: 28%;
     background-image: url("../image/ic_arrow_upward_black_24dp_2x.png");
     background-size: cover;
      /*
@@ -167,8 +167,8 @@ body {
 
 #dir-buttom {
     height:100%;
-    width:24%;
-    margin-left: 30%;
+    width:30%;
+    margin-left: 28%;
     background-image: url("../image/ic_arrow_downward_black_24dp_2x.png");
     background-size: cover;
      /*
