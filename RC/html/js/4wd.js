@@ -1,1 +1,1 @@
-RC4WD = RC4WD || {}
+var RC4WD = RC4WD || {};
