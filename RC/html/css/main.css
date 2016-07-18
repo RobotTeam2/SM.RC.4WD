@@ -47,59 +47,76 @@ body {
     height:100%;
     width:100%;
     float:top;
+    /*
     border-style: solid;
     border-color: green;
+     */
 }
 
+
+
+
 .operater-top {
-    height:32%;
+    height:30%;
     width:100%;
     float:top;
+     /*
     border-style: solid;
     border-color: red;
+      */
 }
 
 .operater-left {
-    height:32%;
-    width:32%;
+    height:30%;
+    width:30%;
     float:left;
+     /*
     border-style: solid;
     border-color: red;
+      */
 }
 
 .operater-center {
-    height:32%;
-    width:32%;
+    height:30%;
+    width:30%;
     float:left;
+     /*
     border-style: solid;
     border-color: red;
+      */
 }
 
 .operater-right {
-    height:32%;
-    width:32%;
+    height:30%;
+    width:30%;
     float:left;
+     /*
     border-style: solid;
     border-color: red;
+      */
 }
 
 .operater-buttom {
-    height:32%;
+    height:30%;
     width:100%;
     float:left;
+     /*
     border-style: solid;
     border-color: red;
+      */
 }
 
 
 #dir-top {
     height:100%;
-    width:30%;
+    width:20%;
     margin: 0 auto;
     background-image: url("../image/ic_arrow_upward_black_24dp_2x.png");
     background-size: cover;
+     /*
     border-style: solid;
     border-color: blue;
+      */
 }
 
 #dir-left {
@@ -108,17 +125,28 @@ body {
     margin-top:0%;
     background-image: url("../image/ic_arrow_back_black_24dp_2x.png");
     background-size: cover;
+     /*
     border-style: solid;
     border-color: blue;
+      */
 }
 
 #dir-center {
     height:100%;
-    width:100%;
+    width:90%;
     border-radius: 50%;
     border-style: solid;
     border-color: blue;
 }
+
+#dir-stop {
+    height:50%;
+    width:45%;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: red;
+}
+
 
 #dir-right {
     height:100%;
@@ -126,18 +154,22 @@ body {
     margin-top:0%;
     background-image: url("../image/ic_arrow_forward_black_24dp_2x.png");
     background-size: cover;
+     /*
     border-style: solid;
     border-color: blue;
+      */
 }
 
 #dir-buttom {
     height:100%;
-    width:30%;
+    width:20%;
     margin: 0 auto;
     background-image: url("../image/ic_arrow_downward_black_24dp_2x.png");
     background-size: cover;
+     /*
     border-style: solid;
     border-color: blue;
+      */
 }
 
 
