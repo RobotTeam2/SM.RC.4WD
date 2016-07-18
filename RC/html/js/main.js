@@ -18,7 +18,7 @@ $( document ).ready(function() {
   });
   $('#dir-center').click(function(){
     console.log( "dir-center" );
-    RC4WD.center();
+    RC4WD.stop();
   });
 });
 
