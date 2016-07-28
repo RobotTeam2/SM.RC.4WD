@@ -1,5 +1,10 @@
+SRC     := main.cpp
+SRC     += ble.entry.cpp
+SRC     += mpu.entry.cpp
+SRC     += car.entry.cpp
+
 CFLAGS  := -std=c++14  -pthread 
 LDFLAGS := -lboost_iostreams
 LDFLAGS += -lboost_system
 all:
-	g++ $(CFLAGS) main.cpp $(LDFLAGS) -o sm.rc.4wd.cmd
+	g++ $(CFLAGS) $(SRC) $(LDFLAGS) -o sm.rc.4wd.cmd

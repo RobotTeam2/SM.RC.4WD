@@ -1,26 +1,22 @@
 #include <string>
 #include <iostream>
-#include <boost/asio.hpp>
-#include <boost/array.hpp>
+#include <thread>
 
 #define DUMP_VAR(x) std::cout << #x << "=<" << x <<">" << std::endl;
+extern void ble_upd_main(void);
+extern void mpu_i2c_main(void);
+extern void car_uart_main(void);
 
 int main(int argc, char * argv[])
 {     
-    using namespace boost::asio::ip;
-
-    boost::asio::io_service io_service;
-    udp::socket sock(io_service, udp::endpoint(udp::v4(), 41234));
     DUMP_VAR(argc);
-    while(true)
-    {
-        boost::array<char, 128> recv_buf;
-        udp::endpoint endpoint;
-        DUMP_VAR(endpoint);
-        size_t len = sock.receive_from(boost::asio::buffer(recv_buf), endpoint);
-        //std::cout.write(recv_buf.data(), len);
-        std::string recv_str(recv_buf.data(),len); 
-        DUMP_VAR(recv_str);
-    }
+    std::thread ble_udp_thd(ble_upd_main);
+    ble_udp_thd.join();
+    
+    std::thread mpu_i2c_thd(mpu_i2c_main);
+    mpu_i2c_thd.join();
+    
+    std::thread car_uart_thd(car_uart_main);
+    car_uart_thd.join();
     return 0;
 }
