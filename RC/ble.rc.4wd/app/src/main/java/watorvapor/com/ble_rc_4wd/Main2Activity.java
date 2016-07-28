@@ -85,6 +85,8 @@ public class Main2Activity extends AppCompatActivity {
         @JavascriptInterface
         public void run(String messege) {
             Log.d(TAB_JS,messege);
+            Log.d(TAB_JS,"mGatt=<" + mGatt + ">");
+            Log.d(TAB_JS,"mCharacteristic=<" + mCharacteristic + ">");
             if(mGatt != null && mCharacteristic != null) {
                 byte[] bytes = messege.getBytes(StandardCharsets.UTF_8);
                 mCharacteristic.setValue(bytes);
@@ -172,7 +174,10 @@ public class Main2Activity extends AppCompatActivity {
             Log.d(TAB_BLE,"service=<" + service + ">");
             mCharacteristic = service.getCharacteristic(UUID.fromString(mUUID));
             Log.d(TAB_BLE,"mCharacteristic=<" + mCharacteristic + ">");
-            byte[] bytes = {0x10,0x20,0x0,0x35};
+
+            String initmessege="init";
+
+            byte[] bytes = initmessege.getBytes(StandardCharsets.UTF_8);
             mCharacteristic.setValue(bytes);
             mGatt.writeCharacteristic(mCharacteristic);
 /*
