@@ -1,6 +1,8 @@
 var util = require('util');
-
 var bleno = require('bleno');
+var dgram = require('dgram');
+var client = dgram.createSocket('udp4');
+
 
 var BlenoCharacteristic = bleno.Characteristic;
 
@@ -28,7 +30,7 @@ EchoCharacteristic.prototype.onWriteRequest = function(data, offset, withoutResp
 
   //console.log('EchoCharacteristic - onWriteRequest: value = ' + this._value.toString('hex'));
   console.log('EchoCharacteristic - onWriteRequest: value = ' + this._value);
-
+  client.send(this._value, 0, this._value.length, 41234, "localhost");
   if (this._updateValueCallback) {
     console.log('EchoCharacteristic - onWriteRequest: notifying');
 
