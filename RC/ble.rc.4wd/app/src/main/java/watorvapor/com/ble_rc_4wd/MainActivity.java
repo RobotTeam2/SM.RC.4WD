@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import android.webkit.WebView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -63,6 +64,9 @@ public class MainActivity extends AppCompatActivity {
     Context mCtxt;
     private BluetoothGatt mGatt;
     BluetoothGattCharacteristic mCharacteristic;
+
+
+    private WebView mWebView;
 
     /**
      * The {@link ViewPager} that will host the section contents.
