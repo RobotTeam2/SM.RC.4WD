@@ -18,3 +18,4 @@ storage/
 3dcam/libuvc
 3dcam/object
 MPU6050/mstest
+service/sm.rc.4wd.cmd
