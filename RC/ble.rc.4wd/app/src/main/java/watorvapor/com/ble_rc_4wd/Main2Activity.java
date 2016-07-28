@@ -32,7 +32,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Main2Activity extends AppCompatActivity {
-    private static final String  TABJS ="js";
+    private static final String  TAB_JS ="js";
 
     BluetoothManager mBleMgr;
     BluetoothAdapter mBleAdapter;
@@ -44,7 +44,7 @@ public class Main2Activity extends AppCompatActivity {
     private static final String mUUID = "ac5636ee-3d36-4afe-9662-ec47fbfe1dd0";
     private static final String mName = "sm.rc.4wd";
     private boolean mConnected = false;
-    private static final String  TABBLE ="ble";
+    private static final String  TAB_BLE ="ble";
 
     Context mCtxt;
     private BluetoothGatt mGatt = null;
@@ -84,13 +84,13 @@ public class Main2Activity extends AppCompatActivity {
     public class JavaScriptBlE {
         @JavascriptInterface
         public void run(String messege) {
-            Log.d(TABJS,messege);
+            Log.d(TAB_JS,messege);
             if(mGatt != null && mCharacteristic != null) {
                 byte[] bytes = messege.getBytes(StandardCharsets.UTF_8);
                 mCharacteristic.setValue(bytes);
                 mGatt.writeCharacteristic(mCharacteristic);
             } else {
-                Log.e(TABBLE,"Please wait for Connect to RC Car!");
+                Log.e(TAB_BLE,"Please wait for Connect to RC Car!");
             }
         }
     }
@@ -101,12 +101,12 @@ public class Main2Activity extends AppCompatActivity {
             @Override
             public void onScanResult(int callbackType, ScanResult result) {
                 super.onScanResult(callbackType, result);
-                Log.d(TABBLE,"result=<" + result + ">");
+                Log.d(TAB_BLE,"result=<" + result + ">");
                 if (result != null && result.getDevice() != null) {
                     BluetoothDevice device = result.getDevice();
-                    Log.d(TABBLE,"device.getName()=<" + device.getName() + ">");
+                    Log.d(TAB_BLE,"device.getName()=<" + device.getName() + ">");
                     if(mName.equals(device.getName())) {
-                        Log.d(TABBLE,"match: device.getAddress()=<" + device.getAddress() + ">");
+                        Log.d(TAB_BLE,"match: device.getAddress()=<" + device.getAddress() + ">");
                         if(false==mConnected) {
                             mConnected =true;
                             connect(mCtxt,device);
@@ -154,12 +154,12 @@ public class Main2Activity extends AppCompatActivity {
         public void onConnectionStateChange(BluetoothGatt gatt, int status,
                                             int newState) {
             super.onConnectionStateChange(gatt, status, newState);
-            Log.d(TABBLE,"status=<" + status + ">" + "newState=<" + newState +">");
+            Log.d(TAB_BLE,"status=<" + status + ">" + "newState=<" + newState +">");
 
             // 接続成功し、サービス取得
             if (newState == BluetoothProfile.STATE_CONNECTED) {
                 mGatt = gatt;
-                Log.d(TABBLE,"gatt=<" + gatt + ">");
+                Log.d(TAB_BLE,"gatt=<" + gatt + ">");
                 discoverService();
             }
 
@@ -169,9 +169,9 @@ public class Main2Activity extends AppCompatActivity {
         public void onServicesDiscovered(BluetoothGatt gatt, int status) {
             super.onServicesDiscovered(gatt, status);
             BluetoothGattService service = gatt.getService(UUID.fromString(mUUID));
-            Log.d(TABBLE,"service=<" + service + ">");
+            Log.d(TAB_BLE,"service=<" + service + ">");
             mCharacteristic = service.getCharacteristic(UUID.fromString(mUUID));
-            Log.d(TABBLE,"mCharacteristic=<" + mCharacteristic + ">");
+            Log.d(TAB_BLE,"mCharacteristic=<" + mCharacteristic + ">");
             byte[] bytes = {0x10,0x20,0x0,0x35};
             mCharacteristic.setValue(bytes);
             mGatt.writeCharacteristic(mCharacteristic);
