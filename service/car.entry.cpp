@@ -34,6 +34,7 @@ void push_command(const std::string &cmd)
       gCarCommand.push_back("c.turn:fwd");
       gCarCommand.push_back("d.speed:40000");
       gCarCommand.push_back("d.turn:fwd");
+      gCarCommand.push_back("run");
    }
    cv.notify_one();
 }
