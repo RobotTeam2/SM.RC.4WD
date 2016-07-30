@@ -11,13 +11,13 @@ int main(int argc, char * argv[])
 {     
     DUMP_VAR(argc);
     std::thread ble_udp_thd(ble_upd_main);
-    ble_udp_thd.join();
-    
     std::thread mpu_udp_thd(mpu_udp_main);
-    mpu_udp_thd.join();
-    
     std::thread car_uart_thd(car_uart_main);
+    
+
     car_uart_thd.join();
+    mpu_udp_thd.join();
+    ble_udp_thd.join();
     return 0;
 }
 

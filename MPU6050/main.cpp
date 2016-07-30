@@ -30,6 +30,8 @@
 using boost::asio::ip::udp;
 
 
+#define DUMP_VAR(x) std::cout << #x << "=<" << x <<">" << std::endl;
+
 int main() {
   ms_open();
   boost::asio::io_service io_service_;
@@ -39,6 +41,7 @@ int main() {
   udp::resolver::query query_(udp::v4(), "localhost", "41235");
   udp::resolver::iterator iter = resolver_.resolve(query_);
   udp::endpoint endpoint_ = *iter;
+  DUMP_VAR(endpoint_);
   do{
     ms_update();
     char buff[256] = {0};
