@@ -13,6 +13,7 @@ void mpu_udp_main(void)
 
     boost::asio::io_service io_service;
     udp::socket sock(io_service, udp::endpoint(udp::v4(), 41235));
+    DUMP_VAR(sock);
     while(true)
     {
         boost::array<char, 128> recv_buf;
