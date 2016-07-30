@@ -46,7 +46,9 @@ void read_dummy()
 
 
 
-
+void handle_read_content(const boost::system::error_code& err){
+   DUMP_VAR(err);
+}
 
 
 void car_uart_main(void)
@@ -54,14 +56,16 @@ void car_uart_main(void)
     io_service io_;
     serial_port port_( io_, "/dev/ttyUSB0" );
     port_.set_option( serial_port_base::baud_rate(115200));
-    std::thread thr_read(read_dummy);
-    thr_read.detach();
+    //std::thread thr_read(read_dummy);
+    //thr_read.detach();
     while(true) {
         std::unique_lock<std::mutex> lock(mtx);
         cv.wait(lock);
         if(false == gCarCommand.empty()) {
            for(auto cmd:gCarCommand) {
-            boost::asio::write(port_, boost::asio::buffer(cmd.c_str(), cmd.size()));
+              boost::asio::write(port_, boost::asio::buffer(cmd.c_str(), cmd.size()));
+              boost::asio::streambuf b;
+              boost::asio::async_read(port_,streambuf,handle_read_content);
            }
            gCarCommand.clear();
         }
