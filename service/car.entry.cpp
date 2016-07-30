@@ -26,15 +26,15 @@ void push_command(const std::string &cmd)
       gCarCommand.clear();
    }
    if("top"==cmd) {
-      gCarCommand.push_back("a.speed:40000");
-      gCarCommand.push_back("a.turn:fwd");
-      gCarCommand.push_back("b.speed:40000");
-      gCarCommand.push_back("b.turn:fwd");
-      gCarCommand.push_back("c.speed:40000");
-      gCarCommand.push_back("c.turn:fwd");
-      gCarCommand.push_back("d.speed:40000");
-      gCarCommand.push_back("d.turn:fwd");
-      gCarCommand.push_back("run");
+      gCarCommand.push_back("a.speed:40000\n");
+      gCarCommand.push_back("a.turn:fwd\n");
+      gCarCommand.push_back("b.speed:40000\n");
+      gCarCommand.push_back("b.turn:fwd\n");
+      gCarCommand.push_back("c.speed:40000\n");
+      gCarCommand.push_back("c.turn:fwd\n");
+      gCarCommand.push_back("d.speed:40000\n");
+      gCarCommand.push_back("d.turn:fwd\n");
+      gCarCommand.push_back("run\n");
    }
    cv.notify_one();
 }
