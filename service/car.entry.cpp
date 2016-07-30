@@ -3,6 +3,7 @@
 #include <mutex>
 #include <condition_variable>
 #include <atomic>
+#include <list>
 #include <thread>
 
 #include <boost/asio/serial_port.hpp>
@@ -13,7 +14,7 @@ using namespace::boost::asio;
 
 #define DUMP_VAR(x) std::cout << __func__ << #x << "=<" << x <<">" << std::endl;
 
-std::string gCarCommand("");
+std::list<std::string> gCarCommand;
 
 std::mutex mtx;
 std::condition_variable cv;
@@ -21,8 +22,20 @@ std::condition_variable cv;
 void push_command(const std::string &cmd)
 {
    std::unique_lock<std::mutex> lock(mtx);
-   if(cmd)
-   gCarCommand = cmd;
+   if("init"==cmd) {
+      gCarCommand.clear();
+   }
+   if("top"==cmd) {
+      gCarCommand.push_back("a.speed:40000");
+      gCarCommand.push_back("a.turn:fwd");
+      gCarCommand.push_back("b.speed:40000");
+      gCarCommand.push_back("b.turn:fwd");
+      gCarCommand.push_back("c.speed:40000");
+      gCarCommand.push_back("c.turn:fwd");
+      gCarCommand.push_back("d.speed:40000");
+      gCarCommand.push_back("d.turn:fwd");
+   }
+   cv.notify_one();
 }
 
 void read_dummy()
@@ -46,8 +59,10 @@ void car_uart_main(void)
         std::unique_lock<std::mutex> lock(mtx);
         cv.wait(lock);
         if(false == gCarCommand.empty()) {
-            boost::asio::write(port_, boost::asio::buffer(gCarCommand.c_str(), gCarCommand.size()));
-            gCarCommand = "";
+           for(auto cmd:gCarCommand) {
+            boost::asio::write(port_, boost::asio::buffer(cmd.c_str(), cmd.size()));
+           }
+           gCarCommand.clear();
         }
     }
 }
