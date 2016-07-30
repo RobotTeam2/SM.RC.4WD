@@ -1,0 +1,10 @@
+[Unit]
+Description=Car 4WD Car Service
+After=syslog.target home.mount
+
+[Service]
+Type=simple
+ExecStart= /home/ma/workspace/SM.RC.4WD/service/sm.rc.4wd.cmd
+
+[Install]
+WantedBy=multi-user.target
