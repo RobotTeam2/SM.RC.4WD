@@ -53,7 +53,7 @@ void car_uart_main(void)
 {
     io_service io_;
     serial_port port_( io_, "/dev/ttyUSB0" );
-    port_.set_option( serial_port_base::baud_rate( 9600 ) );
+    port_.set_option( serial_port_base::baud_rate(115200));
     std::thread thr_read(read_dummy);
     thr_read.detach();
     while(true) {
