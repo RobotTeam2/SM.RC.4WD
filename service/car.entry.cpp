@@ -60,7 +60,7 @@ void push_command(const std::string &cmd)
       gCarCommand.push_back("d.turn:rev\n");
       gCarCommand.push_back("run\n");
    }
-   if("left"==cmd) {
+   if("right"==cmd) {
       gCarCommand.push_back("a.speed:10000\n");
       gCarCommand.push_back("a.turn:rev\n");
       gCarCommand.push_back("b.speed:10000\n");
