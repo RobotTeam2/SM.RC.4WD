@@ -1,5 +1,5 @@
 [Unit]
-Description=Car 4WD MPU6050 LE Service
+Description=Car 4WD MPU 6050 Service
 After=syslog.target home.mount
 
 [Service]
