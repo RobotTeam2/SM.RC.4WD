@@ -5,6 +5,8 @@ After=syslog.target home.mount
 [Service]
 Type=simple
 ExecStart= /home/ma/workspace/SM.RC.4WD/service/sm.rc.4wd.cmd
+Restart=always
+RestartSec=10
 
 [Install]
 WantedBy=multi-user.target
