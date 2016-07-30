@@ -33,10 +33,10 @@ using boost::asio::ip::udp;
 int main() {
   ms_open();
   boost::asio::io_service io_service_;
-  udp::socket socket(io_service_,udp::endpoint(udp::v4(), 0));
+  udp::socket socket_(io_service_,udp::endpoint(udp::v4(), 0));
 
   udp::resolver resolver_(io_service_);
-  udp::resolver::query query_(udp::v4(), "localhost", 41235);
+  udp::resolver::query query_(udp::v4(), "localhost", "41235");
   udp::resolver::iterator iter = resolver_.resolve(query_);
   udp::endpoint endpoint_ = *iter;
   do{

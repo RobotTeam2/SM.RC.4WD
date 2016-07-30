@@ -2,6 +2,11 @@ CXX=g++
 CXXFLAGS= -Wall -g -O2 -std=c++11
 CXX_OPTS= -Wall -g -O2 -std=c++11
 
+LDFLAGS := -pthread 
+LDFLAGS += -lboost_iostreams
+LDFLAGS += -lboost_system
+
+
 INSTALL=install
 
 PROG=mpu6050.service
@@ -12,12 +17,13 @@ TURN=turn.until
 
 
 all: $(PROG).o 
-	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $(PROG) \
-		main.c \
+	$(CXX)  $(CXXFLAGS) -o $(PROG) \
+		main.cpp \
+                $(LDFLAGS) \
 		MotionSensor/libMotionSensor.a \
 		libs/libI2Cdev.a
-	$(CXX) $(LDFLAGS) $(CXXFLAGS) -o $(TURN) \
-		turn.cpp 
+	$(CXX)  $(CXXFLAGS) -o $(TURN) \
+		$(LDFLAGS) turn.cpp 
 
 $(PROG).o: MotionSensor/libMotionSensor.a libs/libI2Cdev.a
 
