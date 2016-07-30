@@ -5,4 +5,5 @@ all:
 install:
 	sudo systemctl enable $(PWD)/mpu.service
 	sudo systemctl enable $(PWD)/car.service
+	sudo systemctl enable $(PWD)/car.ble
 	
