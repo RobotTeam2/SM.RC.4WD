@@ -5,7 +5,7 @@
 
 
 
-#define DUMP_VAR(x) std::cout << __func__<< #x << "=<" << x <<">" << std::endl;
+#define DUMP_VAR(x) std::cout << __func__ << #x << "=<" << x <<">" << std::endl;
 
 void mpu_udp_main(void)
 {     
