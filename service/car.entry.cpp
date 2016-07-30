@@ -28,15 +28,51 @@ void push_command(const std::string &cmd)
       gCarCommand.clear();
    }
    if("top"==cmd) {
-      gCarCommand.push_back("a.speed:40000\n");
+      gCarCommand.push_back("a.speed:10000\n");
       gCarCommand.push_back("a.turn:fwd\n");
-      gCarCommand.push_back("b.speed:40000\n");
+      gCarCommand.push_back("b.speed:10000\n");
       gCarCommand.push_back("b.turn:fwd\n");
-      gCarCommand.push_back("c.speed:40000\n");
+      gCarCommand.push_back("c.speed:10000\n");
       gCarCommand.push_back("c.turn:fwd\n");
-      gCarCommand.push_back("d.speed:40000\n");
+      gCarCommand.push_back("d.speed:10000\n");
       gCarCommand.push_back("d.turn:fwd\n");
       gCarCommand.push_back("run\n");
+   }
+   if("buttom"==cmd) {
+      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.turn:rev\n");
+      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.turn:rev\n");
+      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.turn:rev\n");
+      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.turn:rev\n");
+      gCarCommand.push_back("run\n");
+   }
+   if("left"==cmd) {
+      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.turn:fwd\n");
+      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.turn:rev\n");
+      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.turn:fwd\n");
+      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.turn:rev\n");
+      gCarCommand.push_back("run\n");
+   }
+   if("left"==cmd) {
+      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.turn:rev\n");
+      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.turn:fwd\n");
+      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.turn:rev\n");
+      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.turn:fwd\n");
+      gCarCommand.push_back("run\n");
+   }
+   if("stop"==cmd) {
+      gCarCommand.push_back("stop\n");
    }
    cv.notify_one();
 }
