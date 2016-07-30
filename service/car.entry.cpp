@@ -6,6 +6,7 @@
 #include <list>
 #include <thread>
 
+#include <boost/asio.hpp>
 #include <boost/asio/serial_port.hpp>
 #include <boost/asio/write.hpp>
 #include <boost/asio/read.hpp>
