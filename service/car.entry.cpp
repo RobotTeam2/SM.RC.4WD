@@ -48,8 +48,9 @@ void read_dummy()
 
 
 
-void handle_read_content(const boost::system::error_code& err){
-   DUMP_VAR(err);
+void handle_read_content(){
+   static int i = 0;
+   DUMP_VAR(i++);
 }
 
 
