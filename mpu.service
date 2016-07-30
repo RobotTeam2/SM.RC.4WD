@@ -4,7 +4,7 @@ After=syslog.target home.mount
 
 [Service]
 Type=simple
-ExecStart= /home/ma/workspace/SM.RC.4WD/MPU6050/mpu6050.service 
+ExecStart= /home/ma/workspace/SM.RC.4WD/MPU6050/run.sh
 Restart=always
 RestartSec=10
 
