@@ -68,7 +68,7 @@ void car_uart_main(void)
            for(auto cmd:gCarCommand) {
               boost::asio::write(port_, boost::asio::buffer(cmd.c_str(), cmd.size()));
               boost::asio::streambuf b;
-              boost::asio::async_read(port_,streambuf,boost::bind(&handle_read_content));
+              boost::asio::async_read(port_,b,boost::bind(&handle_read_content));
            }
            gCarCommand.clear();
         }
