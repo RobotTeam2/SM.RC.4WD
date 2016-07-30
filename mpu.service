@@ -1,0 +1,10 @@
+[Unit]
+Description=Car 4WD MPU6050 LE Service
+After=syslog.target home.mount
+
+[Service]
+Type=simple
+ExecStart= /home/ma/workspace/SM.RC.4WD/MPU6050/mpu6050.service 
+
+[Install]
+WantedBy=multi-user.target
