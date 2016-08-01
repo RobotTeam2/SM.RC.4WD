@@ -1,7 +1,7 @@
 PWD := $(shell pwd)
 all:
-	make -C service
-	make -C MPU6050
+	make -C car
+	make -C mpu
 install:
 	sudo systemctl enable $(PWD)/mpu.service
 	sudo systemctl enable $(PWD)/car.service
