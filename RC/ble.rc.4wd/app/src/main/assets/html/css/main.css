@@ -4,8 +4,8 @@ body {
 }
 
 #content {
-    height:800px;
-    width:80%;
+    height:640px;
+    width:640px;
     margin: 0 auto;
     margin-top:200px;
 /*
@@ -18,10 +18,10 @@ body {
     height:100%;
     width:100%;
     float:left;
-    /*
+/*
     border-style: solid;
     border-color: blue;
-     */
+*/
 }
 
 /*
@@ -48,70 +48,89 @@ body {
     height:100%;
     width:100%;
     float:top;
-    /*
+
+/*
     border-style: solid;
     border-color: green;
-     */
+      */
+
 }
 
 
 
 
 .operater-top {
-    height:30%;
+    height:32%;
     width:100%;
     float:top;
-     /*
+
+/*
     border-style: solid;
     border-color: red;
       */
+
 }
 
 .operater-left {
-    height:30%;
+    height:32%;
     width:30%;
     float:left;
-     /*
+
+
+/*
     border-style: solid;
     border-color: red;
       */
+
+
 }
 
 .operater-center {
-    height:30%;
-    width:30%;
+    height:32%;
+    width:33%;
     float:left;
-     /*
+/*    margin-left:10px;*/
+
+
+/*
     border-style: solid;
     border-color: red;
       */
+
+
 }
 
 .operater-right {
-    height:30%;
+    height:32%;
     width:30%;
     float:left;
-     /*
+    margin-left:-20px;
+
+/*
     border-style: solid;
     border-color: red;
       */
+
+
 }
 
 .operater-buttom {
-    height:30%;
+    height:32%;
     width:100%;
     float:left;
-     /*
+
+/*
     border-style: solid;
     border-color: red;
       */
+
 }
 
 
 #dir-top {
     height:100%;
     width:30%;
-    margin-left: 28%;
+    margin-left: 30%;
     background-image: url("../image/ic_arrow_upward_black_24dp_2x.png");
     background-size: cover;
      /*
@@ -135,7 +154,7 @@ body {
 #dir-center {
     height:100%;
     width:90%;
-    border-radius: 50%;
+    /*border-radius: 50%;*/
     background-image: url("../image/ic_cancel_black_24dp_2x.png");
     background-size: cover;
     /*
@@ -169,7 +188,7 @@ body {
 #dir-buttom {
     height:100%;
     width:30%;
-    margin-left: 28%;
+    margin-left: 30%;
     background-image: url("../image/ic_arrow_downward_black_24dp_2x.png");
     background-size: cover;
      /*
