@@ -1,0 +1,200 @@
+body {
+    #background-image: url("../image/background.jpg");
+    #background-size: cover;
+}
+
+#content {
+    height:320px;
+    width:320px;
+    margin: 30px;
+    margin-top:100px;
+/*
+    border-style: solid;
+    border-color: red;
+*/
+}
+
+#left-content {
+    height:100%;
+    width:100%;
+    float:left;
+/*
+    border-style: solid;
+    border-color: blue;
+*/
+}
+
+/*
+#center-content {
+    height:90%;
+    width:30%;
+    float:left;
+    border-style: solid;
+    border-color: blue;
+}
+*/
+
+/*
+#right-content {
+    height:90%;
+    width:45%;
+    float:right;
+    border-style: solid;
+    border-color: blue;
+}
+ */
+
+.operator-centent {
+    height:100%;
+    width:100%;
+    float:top;
+
+/*
+    border-style: solid;
+    border-color: green;
+      */
+
+}
+
+
+
+
+.operater-top {
+    height:32%;
+    width:100%;
+    float:top;
+
+/*
+    border-style: solid;
+    border-color: red;
+      */
+
+}
+
+.operater-left {
+    height:32%;
+    width:30%;
+    float:left;
+
+
+/*
+    border-style: solid;
+    border-color: red;
+      */
+
+
+}
+
+.operater-center {
+    height:32%;
+    width:33%;
+    float:left;
+/*    margin-left:10px;*/
+
+
+/*
+    border-style: solid;
+    border-color: red;
+      */
+
+
+}
+
+.operater-right {
+    height:32%;
+    width:30%;
+    float:left;
+    margin-left:-20px;
+
+/*
+    border-style: solid;
+    border-color: red;
+      */
+
+
+}
+
+.operater-buttom {
+    height:32%;
+    width:100%;
+    float:left;
+
+/*
+    border-style: solid;
+    border-color: red;
+      */
+
+}
+
+
+#dir-top {
+    height:100%;
+    width:30%;
+    margin-left: 30%;
+    background-image: url("../image/ic_arrow_upward_black_24dp_2x.png");
+    background-size: cover;
+     /*
+    border-style: solid;
+    border-color: blue;
+      */
+}
+
+#dir-left {
+    height:100%;
+    width:100%;
+    margin-top:0%;
+    background-image: url("../image/ic_arrow_back_black_24dp_2x.png");
+    background-size: cover;
+     /*
+    border-style: solid;
+    border-color: blue;
+      */
+}
+
+#dir-center {
+    height:100%;
+    width:90%;
+    /*border-radius: 50%;*/
+    background-image: url("../image/ic_cancel_black_24dp_2x.png");
+    background-size: cover;
+    /*
+    border-style: solid;
+    border-color: blue;
+     */
+}
+
+/*
+#dir-stop {
+    height:50%;
+    width:45%;
+    border-radius: 50%;
+    border-style: solid;
+    border-color: red;
+}
+*/
+
+#dir-right {
+    height:100%;
+    width:100%;
+    margin-top:0%;
+    background-image: url("../image/ic_arrow_forward_black_24dp_2x.png");
+    background-size: cover;
+     /*
+    border-style: solid;
+    border-color: blue;
+      */
+}
+
+#dir-buttom {
+    height:100%;
+    width:30%;
+    margin-left: 30%;
+    background-image: url("../image/ic_arrow_downward_black_24dp_2x.png");
+    background-size: cover;
+     /*
+    border-style: solid;
+    border-color: blue;
+      */
+}
+
+
