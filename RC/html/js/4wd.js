@@ -1,5 +1,5 @@
 var RC4WD = RC4WD || {};
-RC4WD.ws = RC4WD.ws || new WebSocket(location.host+'/ws');
+RC4WD.ws = RC4WD.ws || new WebSocket('ws://'+location.host+'/ws');
 RC4WD.top = function () {
     console.log('top');
     if(BLE) {
