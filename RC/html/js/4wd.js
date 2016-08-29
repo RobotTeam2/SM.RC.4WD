@@ -7,6 +7,7 @@ RC4WD.top = function () {
     }
     console.log(RC4WD.ws);
     if(RC4WD.ws.readyState) {
+        console.log('top');
         RC4WD.ws.send('top')
     }
 }
