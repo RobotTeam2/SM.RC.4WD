@@ -1,10 +1,10 @@
 [Unit]
-Description=Car 4WD Wifi RC Service
+Description=Car 4WD WebSocket Service
 After=syslog.target home.mount
 
 [Service]
 Type=simple
-ExecStart= /home/ma/workspace/SM.RC.4WD/wifi_rcv/run.sh
+ExecStart= /home/ma/workspace/SM.RC.4WD/ws_rcv/run.sh
 Restart=always
 RestartSec=10
 
