@@ -2,35 +2,35 @@ var RC4WD = RC4WD || {};
 RC4WD.ws = RC4WD.ws || new WebSocket('ws://'+location.host+'/ws');
 RC4WD.top = function () {
     console.log('top');
-    if(BLE) {
+    if(typeof BLE != 'undefined') {
         BLE.run('top');
     }
     console.log(RC4WD.ws);
 }
 RC4WD.buttom = function () {
     console.log('buttom');
-    if(BLE) {
+    if(typeof BLE != 'undefined') {
         BLE.run('buttom');
     }
     console.log(RC4WD.ws);
 }
 RC4WD.left = function () {
     console.log('left');
-    if(BLE) {
+    if(typeof BLE != 'undefined') {
         BLE.run('left');
     }
     console.log(RC4WD.ws);
 }
 RC4WD.right = function () {
     console.log('right');
-    if(BLE) {
+    if(typeof BLE != 'undefined') {
         BLE.run('right');
     }
     console.log(RC4WD.ws);
 }
 RC4WD.stop = function () {
     console.log('stop');
-    if(BLE) {
+    if(typeof BLE != 'undefined') {
         BLE.run('stop');
     }
     console.log(RC4WD.ws);
