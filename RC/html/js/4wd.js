@@ -7,7 +7,6 @@ RC4WD.top = function () {
     }
     console.log(RC4WD.ws);
     if(RC4WD.ws.readyState) {
-        console.log('top');
         RC4WD.ws.send('top')
     }
 }
@@ -17,6 +16,9 @@ RC4WD.buttom = function () {
         BLE.run('buttom');
     }
     console.log(RC4WD.ws);
+    if(RC4WD.ws.readyState) {
+        RC4WD.ws.send('buttom')
+    }
 }
 RC4WD.left = function () {
     console.log('left');
@@ -24,6 +26,9 @@ RC4WD.left = function () {
         BLE.run('left');
     }
     console.log(RC4WD.ws);
+    if(RC4WD.ws.readyState) {
+        RC4WD.ws.send('left')
+    }
 }
 RC4WD.right = function () {
     console.log('right');
@@ -31,6 +36,9 @@ RC4WD.right = function () {
         BLE.run('right');
     }
     console.log(RC4WD.ws);
+    if(RC4WD.ws.readyState) {
+        RC4WD.ws.send('right')
+    }
 }
 RC4WD.stop = function () {
     console.log('stop');
@@ -38,4 +46,7 @@ RC4WD.stop = function () {
         BLE.run('stop');
     }
     console.log(RC4WD.ws);
+    if(RC4WD.ws.readyState) {
+        RC4WD.ws.send('stop')
+    }
 }
