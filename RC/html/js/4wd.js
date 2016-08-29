@@ -6,6 +6,9 @@ RC4WD.top = function () {
         BLE.run('top');
     }
     console.log(RC4WD.ws);
+    if(RC4WD.ws.readyState) {
+        RC4WD.ws.send('top')
+    }
 }
 RC4WD.buttom = function () {
     console.log('buttom');
