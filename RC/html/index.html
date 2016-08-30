@@ -48,9 +48,21 @@
               
           </div>
            -->
+          <label for="slider-caption">Number:</label>
           <div id="slider"></div>
           <script>
-          $( "#slider" ).slider();
+          $( "#slider" ).slider({
+            range: "min",           // min: 左側から色がつく max: 右側から色がつく
+            min: 1,             // 最小値
+            max: 2,           // 最大値
+            value: 5,          // 現在値
+            step: 1,                // 増分
+            // スライドしたときのイベント処理
+            slide: function(event, ui) {
+              console.log(ui.value);
+              $("#slider-caption").text(ui.value);    // 現在値をスライダキャプションに設定
+              }
+          });
           </script>
       </div>
   </body>
