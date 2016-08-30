@@ -50,3 +50,14 @@ RC4WD.stop = function () {
         RC4WD.ws.send('stop')
     }
 }
+
+RC4WD.speed = function (val) {
+    console.log('speed');
+    if(typeof BLE != 'undefined') {
+        BLE.run('speed',val);
+    }
+    console.log(RC4WD.ws);
+    if(RC4WD.ws.readyState) {
+        RC4WD.ws.send('speed='+val);
+    }
+}
