@@ -4,6 +4,15 @@ body {
 }
 
 #content {
+    height:800px;
+    width:640px;
+    margin: 0 auto;
+/*
+    border-style: solid;
+    border-color: red;
+*/
+}
+#content-panel {
     height:640px;
     width:640px;
     margin: 0 auto;
