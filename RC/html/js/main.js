@@ -20,5 +20,8 @@ $( document ).ready(function() {
     console.log( "dir-center" );
     RC4WD.stop();
   });
+  $( "#slider" ).change(function() {
+    console.log( $(this).val() );
+  });
 });
 
