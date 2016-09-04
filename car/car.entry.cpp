@@ -23,7 +23,7 @@ std::list<std::string> gCarCommand;
 
 std::mutex mtx;
 std::condition_variable cv;
-static std::string gCarSpeed = "10000";
+static std::string gCarSpeed = "30000";
 
 void push_command(const std::string &cmd)
 {
