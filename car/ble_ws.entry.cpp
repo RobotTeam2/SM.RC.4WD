@@ -3,7 +3,7 @@
 #include <boost/asio.hpp>
 #include <boost/array.hpp>
 
-#define DUMP_VAR(x) std::cout << __func__ << #x << "=<" << x <<">" << std::endl;
+#define DUMP_VAR(x) std::cout << __func__ << "." << __LINE__ << ":" << #x << "=<" << x <<">" << std::endl;
 
 void push_command(const std::string &cmd);
 void ble_ws_upd_main(void)
