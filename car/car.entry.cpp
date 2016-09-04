@@ -129,6 +129,7 @@ void car_uart_main(void)
     }
    } catch (std::exception &e) {
       DUMP_VAR(e.what());
+      exit(0);
    }
 }
 
