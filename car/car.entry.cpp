@@ -5,6 +5,7 @@
 #include <atomic>
 #include <list>
 #include <thread>
+#include <exception>
 
 #include <boost/asio.hpp>
 #include <boost/bind.hpp>
@@ -97,6 +98,7 @@ void handle_read_content(){
 
 void car_uart_main(void)
 {
+   try {
     io_service io_;
     serial_port port_( io_, "/dev/ttyUSB0" );
     port_.set_option( serial_port_base::baud_rate(115200));
@@ -112,6 +114,9 @@ void car_uart_main(void)
            gCarCommand.clear();
         }
     }
+   } catch (std::exception &e) {
+      DUMP_VAR(e.what());
+   }
 }
 
 
