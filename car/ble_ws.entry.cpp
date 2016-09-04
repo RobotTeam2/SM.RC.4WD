@@ -6,7 +6,7 @@
 #define DUMP_VAR(x) std::cout << __func__ << #x << "=<" << x <<">" << std::endl;
 
 void push_command(const std::string &cmd);
-void ble_upd_main(void)
+void ble_ws_upd_main(void)
 {     
     using namespace boost::asio::ip;
 
