@@ -20,6 +20,7 @@ std::list<std::string> gCarCommand;
 
 std::mutex mtx;
 std::condition_variable cv;
+static std::string gCarSpeed = "10000";
 
 void push_command(const std::string &cmd)
 {
@@ -28,46 +29,46 @@ void push_command(const std::string &cmd)
       gCarCommand.clear();
    }
    if("top"==cmd) {
-      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("a.turn:fwd\n");
-      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("b.turn:fwd\n");
-      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("c.turn:fwd\n");
-      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("d.turn:fwd\n");
       gCarCommand.push_back("run\n");
    }
    if("buttom"==cmd) {
-      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("a.turn:rev\n");
-      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("b.turn:rev\n");
-      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("c.turn:rev\n");
-      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("d.turn:rev\n");
       gCarCommand.push_back("run\n");
    }
    if("left"==cmd) {
-      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("a.turn:fwd\n");
-      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("b.turn:rev\n");
-      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("c.turn:fwd\n");
-      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("d.turn:rev\n");
       gCarCommand.push_back("run\n");
    }
    if("right"==cmd) {
-      gCarCommand.push_back("a.speed:10000\n");
+      gCarCommand.push_back("a.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("a.turn:rev\n");
-      gCarCommand.push_back("b.speed:10000\n");
+      gCarCommand.push_back("b.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("b.turn:fwd\n");
-      gCarCommand.push_back("c.speed:10000\n");
+      gCarCommand.push_back("c.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("c.turn:rev\n");
-      gCarCommand.push_back("d.speed:10000\n");
+      gCarCommand.push_back("d.speed:" + gCarSpeed + "\n");
       gCarCommand.push_back("d.turn:fwd\n");
       gCarCommand.push_back("run\n");
    }
@@ -76,12 +77,6 @@ void push_command(const std::string &cmd)
    }
    cv.notify_one();
 }
-
-void read_dummy()
-{
-  ::system("cat /dev/ttyUSB0");
-}
-
 
 
 void handle_read_content(){
@@ -95,8 +90,6 @@ void car_uart_main(void)
     io_service io_;
     serial_port port_( io_, "/dev/ttyUSB0" );
     port_.set_option( serial_port_base::baud_rate(115200));
-    //std::thread thr_read(read_dummy);
-    //thr_read.detach();
     while(true) {
         std::unique_lock<std::mutex> lock(mtx);
         cv.wait(lock);
