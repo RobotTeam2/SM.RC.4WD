@@ -6,6 +6,7 @@
 
 
 #define DUMP_VAR(x) std::cout << __func__ << "." << __LINE__ << ":" << #x << "=<" << x <<">" << std::endl;
+#define TRACE_VAR(X)
 
 void mpu_udp_main(void)
 {     
@@ -18,11 +19,11 @@ void mpu_udp_main(void)
     {
         boost::array<char, 128> recv_buf;
         udp::endpoint endpoint;
-        DUMP_VAR(endpoint);
+        TRACE_VAR(endpoint);
         size_t len = sock.receive_from(boost::asio::buffer(recv_buf), endpoint);
         //std::cout.write(recv_buf.data(), len);
         std::string recv_str(recv_buf.data(),len); 
-        DUMP_VAR(recv_str);
+        TRACE_VAR(recv_str);
     }
 }
 
