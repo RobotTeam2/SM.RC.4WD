@@ -17,7 +17,7 @@ using namespace::boost::asio;
 #include <boost/algorithm/string.hpp>
 
 
-#define DUMP_VAR(x) std::cout << __func__ << #x << "=<" << x <<">" << std::endl;
+#define DUMP_VAR(x) std::cout << __func__ << "." << __LINE__ << ":" << #x << "=<" << x <<">" << std::endl;
 
 std::list<std::string> gCarCommand;
 
@@ -83,8 +83,21 @@ void push_command(const std::string &cmd)
    if(posSpd != std::string::npos) {
       auto speedStr = cmd.substr(posSpd + speedTag.size());
       DUMP_VAR(speedStr);
-      auto speed = std::stoi(speedStr);
-      DUMP_VAR(speed);
+      if(speedStr == "1") {
+         gCarSpeed = "10000";
+      }
+      if(speedStr == "2") {
+         gCarSpeed = "20000";
+      }
+      if(speedStr == "3") {
+         gCarSpeed = "30000";
+      }
+      if(speedStr == "4") {
+         gCarSpeed = "40000";
+      }
+      if(speedStr == "5") {
+         gCarSpeed = "50000";
+      }
    }
    cv.notify_one();
 }
