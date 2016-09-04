@@ -1,5 +1,5 @@
 SRC     := main.cpp
-SRC     += ble.entry.cpp
+SRC     += ble_ws.entry.cpp
 SRC     += mpu.entry.cpp
 SRC     += car.entry.cpp
 
