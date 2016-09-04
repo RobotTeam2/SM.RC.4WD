@@ -13,6 +13,8 @@
 #include <boost/asio/read.hpp>
 using namespace::boost::asio;
 
+#include <boost/algorithm/string.hpp>
+
 
 #define DUMP_VAR(x) std::cout << __func__ << #x << "=<" << x <<">" << std::endl;
 
@@ -74,6 +76,14 @@ void push_command(const std::string &cmd)
    }
    if("stop"==cmd) {
       gCarCommand.push_back("stop\n");
+   }
+   std::string speedTag("speed=");
+   auto posSpd = cmd.find(speedTag);
+   if(posSpd != std::string::npos) {
+      auto speedStr = cmd.substr(posSpd + speedTag.size());
+      DUMP_VAR(speedStr);
+      auto speed = std::stoi(speedStr);
+      DUMP_VAR(speed);
    }
    cv.notify_one();
 }
