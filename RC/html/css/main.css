@@ -12,6 +12,12 @@ body {
     border-color: red;
 */
 }
+#slider-panel {
+    height:20px;
+    width:640px;
+    margin: 0 auto;
+    margin-top:50px;
+}
 #content-panel {
     height:640px;
     width:640px;
